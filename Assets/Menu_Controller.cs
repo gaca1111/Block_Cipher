@@ -1,6 +1,8 @@
-﻿using Crosstales.FB;
+﻿using System;
+using Crosstales.FB;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -103,6 +105,8 @@ public class Menu_Controller : MonoBehaviour {
     public void On_click_start_input() {
 
         Set_data(Converter_Helper.Bytes_to_binary(Converter_Helper.String_to_bytes(input_text)), Cipher_Type.Txt);
+        laundry_data.Set_data(input_text);
+        laundry_data.Set_work_bytes(Encoding.Default.GetBytes(input_text));
         pick_controller.Ready_up();
         Stand_by();
     }
@@ -110,6 +114,8 @@ public class Menu_Controller : MonoBehaviour {
     public void On_click_start_txt() {
 
         Set_data(Converter_Helper.Bytes_to_binary(Converter_Helper.String_to_bytes(Converter_Helper.Txt_to_string(txt_path))), Cipher_Type.Txt);
+        laundry_data.Set_data(Converter_Helper.Txt_to_string(txt_path));
+        laundry_data.Set_work_bytes(Encoding.Default.GetBytes(Converter_Helper.Txt_to_string(txt_path)));
         pick_controller.Ready_up();
         Stand_by();
     }
@@ -117,6 +123,8 @@ public class Menu_Controller : MonoBehaviour {
     public void On_click_start_img() {
 
         Set_data(Converter_Helper.Bytes_to_binary(Converter_Helper.Img_to_byte(img_path)), Cipher_Type.Img);
+        laundry_data.Set_data(Encoding.ASCII.GetString(Converter_Helper.Img_to_byte(img_path)));
+        laundry_data.Set_work_bytes(Converter_Helper.Img_to_byte(img_path));
         pick_controller.Ready_up();
         Stand_by();
     }

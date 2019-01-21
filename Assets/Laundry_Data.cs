@@ -7,16 +7,38 @@ public class Laundry_Data : MonoBehaviour {
     private BitArray raw_bits;
     private BitArray end_bits;
     private BitArray work_bits;
+    private byte[] work_bytes;
     private List<Math_Functions> picked_functions;
     private int iterations;
     private Cipher_Type cipher_type;
+    private string data;
 
     //=== BITS =====================================================================================================================================================
+
+    public void Set_data(string data)
+    {
+        this.data = data;
+    }
+
+    public string Get_data()
+    {
+        return data;
+    }
 
     public void Set_raw_bits(BitArray bits) {
 
         raw_bits = bits;
         Fill_up_bits();
+    }
+
+    public void Set_work_bytes(byte[] bytes)
+    {
+        work_bytes = bytes;
+    }
+
+    public byte[] Get_work_bytes()
+    {
+        return work_bytes;
     }
 
     public BitArray Get_raw_bits() {
